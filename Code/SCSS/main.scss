@@ -1,0 +1,42 @@
+@import './resets';
+@import './variables';
+
+@function font-weight($weight-name) {
+    @return map-get($font-weight, $weight-name);
+}
+
+@mixin flexCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body {
+    background: $primary-color;
+    color: $text-color;
+    font-weight: map-get($font-weight, bold);
+}
+
+.main {
+    @include flexCenter;
+    width: 80%;
+    margin: 0 auto;
+}
+
+#{&}__paragraph {
+    font-weight: weight(bold);
+
+    &:hover {
+        color: pink;
+    }
+}
+
+
+$colors: (primary: #3498db, secondary: #e74c3c);
+
+@each $name, $color in $colors {
+  .#{$name}-text {
+    color: $color;
+  }
+}
+
